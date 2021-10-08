@@ -12,4 +12,4 @@ RUN npm install --production
 
 COPY "./src/" "./src/"
 
-CMD [ "npm", "run", "dev", "./src/index.ts"]
+CMD [ "npm", "run", "dev"]
