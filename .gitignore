@@ -3,6 +3,11 @@
 #
 /discord_token
 
+#
+# Ignore pipenv files, not neccessary for dave, only docker-compose
+#
+/Pipfile*
+
 # Build
 /build/
 
