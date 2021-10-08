@@ -1,0 +1,29 @@
+version: "3.8"
+
+secrets:
+  discord_token:
+    file: './discord_token'
+
+services:
+  dave:
+    container_name: dave-bot
+    build:
+      context: .
+    # Shouldn't need image as long as build: is specified
+    #  args:
+    #    - 
+    # image: 
+    environment:
+      DISCORD_TOKEN: '/run/secrets/discord_token'
+    secrets:
+      - source: discord_token
+        # "These fields are not supported by this implementation of the Compose file"
+        # Interesting, this seems to have changed or I'm doing something wrong.
+        # uid: '1000'
+        # gid: '1000'
+        # mode: 0440
+    stop_signal: SIGINT # Look up what node prefers
+    restart: unless-stopped
+
+  # Possible section for database service/image here
+  # sqlite:
